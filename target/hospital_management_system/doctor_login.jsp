@@ -4,15 +4,15 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Index Page</title>
+    <title>Doctor Panel</title>
     <%@include file="../component/allcss.jsp"%>
 
 </head>
 <body>
 
-    <%@include file="../component/navbar.jsp"%>
     <h1 class="text-center">Riyan J</h1>
 
     
+
 </body>
 </html>
