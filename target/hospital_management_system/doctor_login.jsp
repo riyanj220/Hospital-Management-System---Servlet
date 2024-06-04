@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <h1 class="text-center">Riyan J</h1>
+    <%@include file="../component/navbar.jsp"%>
 
     
 
