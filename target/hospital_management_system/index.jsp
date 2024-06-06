@@ -10,6 +10,12 @@
     <style type = "text/css">
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+        .custom-image {
+            position: relative;
+            top: 15px;
+            width: 110%; /* Make the image smaller, adjust percentage as needed */
         }
     </style>
 
@@ -76,7 +82,7 @@
                         <div class = "card point-card">
                             <div class="card-body">
                                 <p class ="fs-5">Clean Environment</p>
-                                <p>Ensuring a pristine environment: Where every surface gleams and every breath is pure, safeguarding patient health and recovery.</p>
+                                <p>Ensuring a spotless environment: gleaming surfaces and pure air to safeguard patient health and recovery</p>
                             </div>
                         </div>
                     </div>
@@ -85,7 +91,8 @@
                         <div class = "card point-card">
                             <div class="card-body">
                                 <p class ="fs-5">Friendly Doctors</p>
-                                <p>Empowering care through warm hearts and skilled hands: Where every patient encounter feels like a comforting embrace in the journey to health.</p>
+                                <p>
+                                  Empowering care: warm hearts and skilled hands comforting every patient thats the pleasure.</p>
                             </div>
                         </div>
                     </div>
@@ -94,7 +101,7 @@
                         <div class = "card point-card">
                             <div class="card-body">
                                 <p class ="fs-5">Resource Allocation</p>
-                                <p>In the heartbeat of efficiency, resources are orchestrated seamlessly, maximizing care without waste or delay.</p>
+                                <p>Efficiency in action: seamless resource management maximizes care without waste or delay.</p>
                             </div>
                         </div>
                     </div>
@@ -104,11 +111,62 @@
             </div>
 
             <div class ="col-md-4">
-                <img alt="" src = "img/img7.jpg">
+                <img alt="" src = "img/img7.jpg" class="custom-image">
             </div>
 
 
         </div>
+    </div>
+    <hr>
+
+    <div class ="container p-2">
+      <p class ="text-center fs-2"> Our Team </p>
+
+      <div class ="row">
+
+        <div class ="col-md-3">
+          <div class ="card point-card">
+            <div class ="card-body text-center">
+              <img src ="img/team1.jpg" width="220px" height="300px">
+              <p class ="fw-bold fs-5"> Samuan Simi</p>
+              <p class ="fs-7"> (CEO and Chairman)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class ="col-md-3">
+          <div class ="card point-card">
+            <div class ="card-body text-center">
+              <img src ="img/team2.jpg" width="220px" height="300px">
+              <p class ="fw-bold fs-5"> Dr. Riyan J</p>
+              <p class ="fs-7"> (Cheif Doctor)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class ="col-md-3">
+          <div class ="card point-card">
+            <div class ="card-body text-center">
+              <img src ="img/team3.jpg" width="220px" height="300px">
+              <p class ="fw-bold fs-5"> Dr. Nuise Paule</p>
+              <p class ="fs-7"> (Cheif Doctor)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class ="col-md-3">
+          <div class ="card point-card">
+            <div class ="card-body text-center">
+              <img src ="img/team4.jpg" width="220px" height="300px">
+              <p class ="fw-bold fs-5"> Dr. Mathew Samuel</p>
+              <p class ="fs-7"> (Cheif Doctor)</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
     </div>
     
 </body>
