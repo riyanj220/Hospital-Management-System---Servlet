@@ -44,7 +44,7 @@
                         <button type = "submit" class="btn bg-success text-white col-md-12">Login </button> 
                         
                     </form>
-                    <br> Don't have an account? <a href ="signup.jsp" class ="clink">Create one</a>
+                    <br> Don't have an account? <a href ="signup.jsp" class ="text-decoration-none">Create one</a>
 
                     </div>
 
