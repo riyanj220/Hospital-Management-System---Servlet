@@ -14,8 +14,8 @@
         }
         .custom-image {
             position: relative;
-            top: 15px;
-            width: 110%; /* Make the image smaller, adjust percentage as needed */
+            top: 20px;
+            width: 115%; /* Make the image smaller, adjust percentage as needed */
         }
     </style>
 
@@ -39,16 +39,7 @@
             <img src="img/img2.jpg" class="d-block w-100" alt="..." height="500px">
           </div>
           <div class="carousel-item">
-            <img src="img/img3.jpg" class="d-block w-100" alt="..." height="500px">
-          </div>
-          <div class="carousel-item">
             <img src="img/img4.jpg" class="d-block w-100" alt="..." height="500px">
-          </div>
-          <div class="carousel-item">
-            <img src="img/img5.jpg" class="d-block w-100" alt="..." height="500px">
-          </div>
-          <div class="carousel-item">
-            <img src="img/img6.jpg" class="d-block w-100" alt="..." height="500px">
           </div>
         </div>
 
@@ -169,5 +160,7 @@
 
     </div>
     
+
+    <%@include file="../component/footer.jsp"%>
 </body>
 </html>
