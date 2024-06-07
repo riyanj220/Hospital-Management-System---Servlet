@@ -1,3 +1,6 @@
+<!-- <%@page import="com.db.DBConnect"%>
+<%@page import="java.sql.Connection"%> -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
@@ -23,6 +26,15 @@
 <body>
 
     <%@include file="../component/navbar.jsp"%>
+
+    <!-- <% 
+      Connection con = DBConnect.getCon(); 
+          if (con != null) {
+              out.println("Connection successful: " + con);
+          } else {
+              out.println("Failed to establish connection.");
+            }
+    %> -->
 
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">

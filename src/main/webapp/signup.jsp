@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html>
@@ -29,10 +31,20 @@
                     <div class = "card-body">
                         <p class = "fs-4 text-center">User Register</p>
 
-                    <form action = "#" method="post">
+                        <c:if test="${not empty sucMsg }">
+                            <p class="text-center text-success fs-3">${sucMsg}</p>
+                            <c:remove var="sucMsg" scope="session"/>
+                        </c:if>
+
+                        <c:if test="${not empty errorMsg }">
+                            <p class="text-center text-danger fs-3">${errorMsg}</p>
+                            <c:remove var="errorMsg" scope="session"/>
+                        </c:if>
+
+                    <form action = "user_register" method="post">
                         <div class = "mb-3">
                             <label class = "form-label">Full name</label> <input required
-                            name = "Fullname" type="text" class="form-control"> 
+                            name = "full_name" type="text" class="form-control"> 
                         </div>
                         <div class = "mb-3">
                             <label class = "form-label">Email address</label> <input required
