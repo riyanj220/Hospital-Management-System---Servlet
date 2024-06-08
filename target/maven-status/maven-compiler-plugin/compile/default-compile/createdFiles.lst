@@ -1,6 +1,7 @@
 com\db\DBConnect.class
 com\admin\AdminLogin.class
-com\entity\User.class
 com\user\servlet\UserRegister.class
 com\admin\AdminLogout.class
 com\dao\UserDAO.class
+com\entity\User.class
+com\user\servlet\UserLogin.class
