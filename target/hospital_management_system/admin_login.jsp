@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +28,19 @@
                 <div class ="card point-card">
 
                     <div class = "card-body">
-                        <p class = "fs-4 text-center">Admin Login</p>
+                        <p class = "fs-4 text-center">Admin Portal</p>
 
-                    <form action = "#" method="post">
+                        <c:if test="${not empty sucMsg }">
+                            <p class="text-center text-success fs-5">${sucMsg}</p>
+                            <c:remove var="sucMsg" scope="session"/>
+                        </c:if>
+
+                        <c:if test="${not empty errorMsg }">
+                            <p class="text-center text-danger fs-5">${errorMsg}</p>
+                            <c:remove var="errorMsg" scope="session"/>
+                        </c:if>
+
+                    <form action = "adminLogin" method="post">
                         <div class = "mb-3">
                             <label class = "form-label">Email address</label> <input required
                             name = "email" type="email" class="form-control"> 

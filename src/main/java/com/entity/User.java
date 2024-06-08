@@ -6,6 +6,9 @@ public class User {
     private String email;
     private String password;
 
+    public User(){
+        super();
+    }
     public User(String fullName, String email, String password){
         super();
         this.fullName = fullName;

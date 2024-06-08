@@ -28,7 +28,7 @@
                 <div class ="card point-card">
 
                     <div class = "card-body">
-                        <p class = "fs-4 text-center">Doctor Login</p>
+                        <p class = "fs-4 text-center">Doctor Portal</p>
 
                     <form action = "#" method="post">
                         <div class = "mb-3">
