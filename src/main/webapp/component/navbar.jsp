@@ -47,7 +47,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Change password</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="userLogout">Logout</a></li>
               </ul>
             </div>
 

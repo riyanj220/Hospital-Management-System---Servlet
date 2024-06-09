@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false"%>
 
+<style>
+  .navbar-nav.ms-auto {
+            margin-right: 15px; /* Adjust the value as needed */
+        }
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.jsp"><i class="fas fa-clinic-medical"></i> MEDI HOME</a>
@@ -33,7 +38,7 @@
             </li>        
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><i class="fa-regular fa-calendar-check"></i>Book Appointment</a>
+              <a class="nav-link active" aria-current="page" href="#"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
             </li>
 
             <div class="dropdown active">
@@ -42,7 +47,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Change password</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="userLogout">Logout</a></li>
               </ul>
             </div>
 

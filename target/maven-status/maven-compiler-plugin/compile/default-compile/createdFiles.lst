@@ -1,4 +1,5 @@
 com\db\DBConnect.class
+com\user\servlet\UserLogout.class
 com\admin\AdminLogin.class
 com\user\servlet\UserRegister.class
 com\admin\AdminLogout.class
