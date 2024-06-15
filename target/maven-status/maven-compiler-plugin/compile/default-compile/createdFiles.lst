@@ -7,6 +7,7 @@ com\admin\UpdateDoctor.class
 com\admin\AddDoctor.class
 com\user\servlet\UserRegister.class
 com\admin\AdminLogout.class
+com\admin\DeleteDoctor.class
 com\dao\SpecialistDAO.class
 com\dao\DoctorDAO.class
 com\entity\User.class

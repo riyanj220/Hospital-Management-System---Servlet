@@ -6,6 +6,7 @@ D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\User.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Doctor.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AdminLogout.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\DeleteDoctor.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\DoctorDAO.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserLogout.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Specialist.java

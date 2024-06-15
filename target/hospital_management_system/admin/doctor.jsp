@@ -141,7 +141,7 @@
                                             </td>
                                             <td>
                                                 <a href ="edit_doctor.jsp?id=<%=d.getId()%>" class="btn btn-sm btn-primary">Edit</a>
-                                                <a href ="#" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href ="../deleteDoctor?id=<%=d.getId()%>" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
 
