@@ -1,3 +1,5 @@
+com\doctor\DoctorLogin.class
+com\doctor\DoctorLogout.class
 com\dao\UserDAO.class
 com\entity\Doctor.class
 com\db\DBConnect.class
