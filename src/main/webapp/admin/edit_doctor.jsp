@@ -51,7 +51,7 @@
                             Doctor d = dao2.getDoctorById(id);
                         %>
 
-                        <form action="../addDoctor" method="post">
+                        <form action="../updateDoctor" method="post">
                             <div class="mb-3">
                                 <label class="form-Label ">Full name</label> <input type="text" required name="fullname" class="form-control" value="<%=d.getFullName() %>">
                             </div>
@@ -94,6 +94,8 @@
                                 <label class="form-Label ">Password</label> <input required name="password" type="text" class="form-control" value="<%=d.getPassword() %>">
                             </div>
                             
+                            <input type ="hidden" name="id" value="<%=d.getId()%>">
+
                             <button type="submit" class="btn btn-primary col-md-12">Update</button>
                         </form>
                     </div>

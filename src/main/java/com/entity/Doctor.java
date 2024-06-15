@@ -18,6 +18,24 @@ public class Doctor {
         this.password = password;
     }
 
+    
+
+    public Doctor(int id, String fullName, String dob, String qualification, String specialist, String email,
+            String mobNo, String password) {
+        
+        super(); 
+        this.id = id;
+        this.fullName = fullName;
+        this.dob = dob;
+        this.qualification = qualification;
+        this.specialist = specialist;
+        this.email = email;
+        this.mobNo = mobNo;
+        this.password = password;
+    }
+
+
+
     private int id;
     private String fullName;
     private String dob;
