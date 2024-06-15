@@ -140,7 +140,7 @@
                                                 <%=d.getMobNo() %>
                                             </td>
                                             <td>
-                                                <a href ="#" class="btn btn-sm btn-primary">Edit</a>
+                                                <a href ="edit_doctor.jsp?id=<%=d.getId()%>" class="btn btn-sm btn-primary">Edit</a>
                                                 <a href ="#" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
@@ -152,11 +152,10 @@
                         </table>
 
                     </div>
-                
-
-
-
-
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
