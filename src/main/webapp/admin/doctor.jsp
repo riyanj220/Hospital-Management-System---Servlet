@@ -5,6 +5,8 @@
 <%@ page import="com.dao.SpecialistDAO" %>
 <%@ page import="com.entity.Specialist" %>
 <%@ page import="com.db.DBConnect" %>
+<%@ page import="com.dao.DoctorDAO" %>
+<%@ page import="com.entity.Doctor" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,14 +38,14 @@
                             <c:remove var="errorMsg" scope="session" />
                         </c:if>
                         
-                        <c:if test="${not empty succMsg}">
+                        <c:if test="${not empty sucMsg}">
                             <div class="fs-3 text-center text-success" role="alert">${sucMsg}
 
                             </div> 
-                            <c:remove var="succMsg" scope="session" />
+                            <c:remove var="sucMsg" scope="session" />
                         </c:if>
 
-                        <form action="add_doctor" method="post">
+                        <form action="../addDoctor" method="post">
                             <div class="mb-3">
                                 <label class="form-Label ">Full name</label> <input type="text" required name="fullname" class="form-control">
                             </div>
@@ -54,7 +56,7 @@
 
                             
                             <div class="mb-3">
-                                <label class="form-label">Qualification</label> <input required name="quali" type="text" class="form-control">
+                                <label class="form-label">Qualification</label> <input required name="qualification" type="text" class="form-control">
                             </div>
                                 
                             <div class="mb-3">
@@ -111,6 +113,40 @@
                             </thead>
                             <tbody>
 
+                                <%
+                                    DoctorDAO dao2 = new DoctorDAO(DBConnect.getCon());
+                                    List<Doctor> list2  = dao2.getAllDoctor();
+
+                                    for(Doctor d:list2)
+                                    {%>
+
+                                        <tr>
+                                            <td>    
+                                                <%=d.getFullName() %>
+                                            </td>
+                                            <td>
+                                                <%=d.getDob() %>
+                                            </td>
+                                            <td>
+                                                <%=d.getQualification() %>
+                                            </td>
+                                            <td>
+                                                <%=d.getSpecialist() %>
+                                            </td>
+                                            <td>
+                                                <%=d.getEmail() %>
+                                            </td>
+                                            <td>
+                                                <%=d.getMobNo() %>
+                                            </td>
+                                            <td>
+                                                <a href ="#" class="btn btn-sm btn-primary">Edit</a>
+                                                <a href ="#" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+
+                                    <%}
+                                %>
 
                             </tbody>
                         </table>

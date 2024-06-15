@@ -1,11 +1,14 @@
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\db\DBConnect.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\UserDAO.java
-D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserLogout.java
-D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Specialist.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AddDoctor.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserLogin.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\User.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Doctor.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AdminLogout.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\DoctorDAO.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserLogout.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Specialist.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AdminLogin.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\SpecialistDAO.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AddSpecialist.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserRegister.java
-D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AdminLogout.java

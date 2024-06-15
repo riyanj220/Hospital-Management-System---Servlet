@@ -1,10 +1,13 @@
+com\dao\UserDAO.class
+com\entity\Doctor.class
 com\db\DBConnect.class
 com\user\servlet\UserLogout.class
 com\admin\AdminLogin.class
+com\admin\AddDoctor.class
 com\user\servlet\UserRegister.class
 com\admin\AdminLogout.class
 com\dao\SpecialistDAO.class
-com\dao\UserDAO.class
+com\dao\DoctorDAO.class
 com\entity\User.class
 com\admin\AddSpecialist.class
 com\user\servlet\UserLogin.class
