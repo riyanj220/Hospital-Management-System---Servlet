@@ -2,7 +2,9 @@ com\doctor\DoctorLogin.class
 com\doctor\DoctorLogout.class
 com\dao\UserDAO.class
 com\entity\Doctor.class
+com\dao\AppointmentDAO.class
 com\db\DBConnect.class
+com\entity\Appointment.class
 com\user\servlet\UserLogout.class
 com\admin\AdminLogin.class
 com\admin\UpdateDoctor.class
@@ -14,5 +16,6 @@ com\dao\SpecialistDAO.class
 com\dao\DoctorDAO.class
 com\entity\User.class
 com\admin\AddSpecialist.class
+com\user\servlet\AppointmentServlet.class
 com\user\servlet\UserLogin.class
 com\entity\Specialist.class

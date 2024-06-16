@@ -20,9 +20,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="user_login.jsp"><i class="fa-solid fa-user"></i> User</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
-              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="user_appointment.jsp"><i class="fa-solid fa-calendar-check"></i> Appointment</a>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="doctor_login.jsp"><i class="fa-solid fa-user-doctor"></i> Doctor</a>
               </li>
@@ -38,7 +38,7 @@
             </li>        
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+              <a class="nav-link active" aria-current="page" href="user_appointment.jsp"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
             </li>
 
             <div class="dropdown active">

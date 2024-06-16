@@ -1,3 +1,4 @@
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Appointment.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\db\DBConnect.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\doctor\DoctorLogin.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\doctor\DoctorLogout.java
@@ -8,6 +9,8 @@ D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\User.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\entity\Doctor.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\AdminLogout.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\AppointmentDAO.java
+D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\AppointmentServlet.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\admin\DeleteDoctor.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\dao\DoctorDAO.java
 D:\Riyan\Hospital-Management-System\project\hospital_management_system\src\main\java\com\user\servlet\UserLogout.java
