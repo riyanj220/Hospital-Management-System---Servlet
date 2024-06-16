@@ -11,8 +11,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"> <a class="nav-link active" href="home.jsp">Home</a></li>
-                <li class="nav-item"> <a class="nav-link active" href="appoitment.jsp">Patients</a></li> 
+                <li class="nav-item"> <a class="nav-link active" href="index.jsp">Home</a></li>
+                <li class="nav-item"> <a class="nav-link active" href="patient.jsp">Patients</a></li> 
             </ul>
             
             <form class="d-flex">

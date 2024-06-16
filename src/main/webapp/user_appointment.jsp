@@ -10,7 +10,6 @@ response.setDateHeader("Expires", 0);
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-<%@ page import="java.util.List" %>
 <%@ page import="com.dao.SpecialistDAO" %>
 <%@ page import="com.entity.Specialist" %>
 <%@ page import="com.db.DBConnect" %>
