@@ -34,7 +34,7 @@
           <c:if test="${not empty userObj}">
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-calendar-check"></i> View Appointment</a>
+              <a class="nav-link active" aria-current="page" href="view_appointment.jsp"><i class="fa-solid fa-calendar-check"></i> View Appointment</a>
             </li>        
 
             <li class="nav-item">
