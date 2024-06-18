@@ -2,6 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false"%>
 
+<%@ page import="com.db.DBConnect" %>
+<%@ page import="com.dao.DoctorDAO" %>
+<%@ page import="com.db.DBConnect" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,11 +42,13 @@
         </c:if>
 
         
+        <% DoctorDAO dao = new DoctorDAO(DBConnect.getCon());%>
+
         <div class="row">
             <div class="col-md-4">
                 <div class="card point-card">
                     <div class="card-body text-center text-success"> <i class="fas fa-user-md fa-3x"></i> <br> <p class="fs-4 text-center">
-                        Doctors <br>5
+                        Doctors <br><%=dao.countDoctor()%>
                     </p>
                     </div>
                 </div>
@@ -52,7 +58,7 @@
             <div class="col-md-4">
                 <div class="card point-card">
                     <div class="card-body text-center text-success"> <i class="fas fa-user-circle fa-3x"></i><br> <p class="fs-4 text-center">
-                        Users <br>43
+                        Users <br><%=dao.countUsers()%>
                     </p>
                     </div>
                 </div>
@@ -62,7 +68,7 @@
             <div class="col-md-4">
                 <div class="card point-card">
                     <div class="card-body text-center text-success"> <i class="far fa-calendar-check fa-3x"></i><br> <p class="fs-4 text-center">
-                        Total Appointments <br>453
+                        Total Appointments <br><%=dao.countAppointment()%>
                         </p>
                     </div>
                  
@@ -74,7 +80,7 @@
                 <div class="card point-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <div class="card-body text-center text-success">
                         <i class="fa-solid fa-notes-medical fa-3x"></i><br> <p class="fs-4 text-center">
-                        Specialist <br>34
+                        Specialist <br><%=dao.countSpecialist()%>
                         </p>
                     </div>
                 </div>
