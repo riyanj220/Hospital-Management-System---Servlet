@@ -3,6 +3,7 @@ com\doctor\DoctorLogout.class
 com\dao\UserDAO.class
 com\entity\Doctor.class
 com\dao\AppointmentDAO.class
+com\user\servlet\changePassword.class
 com\db\DBConnect.class
 com\entity\Appointment.class
 com\user\servlet\UserLogout.class

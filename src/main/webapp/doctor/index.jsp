@@ -36,7 +36,7 @@
         Doctor d = (Doctor)session.getAttribute("doctObj");
         DoctorDAO dao = new DoctorDAO(DBConnect.getCon());
     %>
-    
+
     <div class="container p-5">
         <div class="row">
             <div class="col-md-4 offset-md-2">
@@ -46,7 +46,7 @@
                         <br> 
                     
                         <p class="fs-4 text-center"> 
-                            Doctor <br><%=dao.countDoctor()%>
+                            Total Doctors <br><%=dao.countDoctor()%>
                         </p>
                 
                     </div>

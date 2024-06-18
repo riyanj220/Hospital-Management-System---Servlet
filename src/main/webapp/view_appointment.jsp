@@ -9,6 +9,7 @@
 <%@ page import="com.dao.DoctorDAO" %>
 <%@ page import="com.entity.Appointment" %>
 <%@ page import="com.entity.Doctor" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,10 @@
 <body>
     <%@include file="../component/navbar.jsp"%>
 
-    
+    <c:if test="${empty userObj}">
+        <c:redirect url="user_login.jsp"></c:redirect>
+    </c:if>
+
     <div class="container-fulid backImg p-5">
         <p class="text-center fs-2 text-white"></p> 
     </div>

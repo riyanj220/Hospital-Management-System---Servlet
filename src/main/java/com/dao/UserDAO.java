@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import com.entity.User;
 
+
 public class UserDAO {
 
     private Connection con;
@@ -68,4 +69,49 @@ public class UserDAO {
         return u;
     }
 
+    public boolean checkOldPassword(int userId,String oldPassword){
+        boolean f = false;
+
+        try {
+            String sql = "select * from user_details where id=? and password=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setString(2, oldPassword);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                f= true;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return f;   
+    }
+
+    public boolean changePassword(int userId,String newPassword){
+        boolean f = false;
+
+        try {
+            String sql = "update user_details set password = ? where id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, newPassword);
+            ps.setInt(2, userId);
+            
+            int i = ps.executeUpdate();
+
+            if (i == 1) {
+                f=true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return f;   
+    }
 }

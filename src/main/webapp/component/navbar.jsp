@@ -46,7 +46,7 @@
                 <i class ="fa-solid fa-circle-user"></i> ${userObj.fullName}
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Change password</a></li>
+                <li><a class="dropdown-item" href="change_password.jsp">Change password</a></li>
                 <li><a class="dropdown-item" href="userLogout">Logout</a></li>
               </ul>
             </div>
