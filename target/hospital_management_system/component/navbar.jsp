@@ -6,7 +6,7 @@
             margin-right: 15px; /* Adjust the value as needed */
         }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4985de;">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.jsp"><i class="fas fa-clinic-medical"></i> MEDI HOME</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

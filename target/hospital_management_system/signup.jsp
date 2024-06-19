@@ -10,6 +10,18 @@
     <%@include file="../component/allcss.jsp"%>
 
     <style type = "text/css">
+        body {
+            background: url('img/medical2.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+
+        .container {
+            margin-top: 50px;
+            border-radius: 20px; 
+        }
+
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
@@ -56,7 +68,7 @@
                             name = "password" type="password" class="form-control"> 
                         </div>
 
-                        <button type = "submit" class="btn bg-success text-white col-md-12">Register </button> 
+                        <button type = "submit" class="btn bg-primary text-white col-md-12">Register </button> 
                         
                     </form>
                     <br> Already have an account? <a href ="user_login.jsp" class ="text-decoration-none">Login here</a>

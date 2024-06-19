@@ -17,7 +17,7 @@
         }
         .custom-image {
             position: relative;
-            top: 20px;
+            top: -38px;
             width: 115%; /* Make the image smaller, adjust percentage as needed */
         }
     </style>
@@ -67,7 +67,7 @@
 
 
     <div class ="container p-3">
-        <p class="text-center fs-2">Key features of our hospital</p>
+        <p class="text-center fs-2" style="margin-top: 15px; font-weight: bold;">Key Features Of Our Hospital</p>
 
         <div class="row">
             <div class = "col-md-8 p-5">
@@ -123,7 +123,7 @@
     <hr>
 
     <div class ="container p-2">
-      <p class ="text-center fs-2"> Our Team </p>
+      <p class ="text-center fs-2" style="font-weight: bold;"> Our Team </p>
 
       <div class ="row">
 
