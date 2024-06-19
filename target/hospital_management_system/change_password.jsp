@@ -37,12 +37,12 @@
                     <p class="text-center fs-3">Change Password</p> 
 
                         <c:if test="${not empty sucMsg }">
-                            <p class="text-center text-success fs-3">${sucMsg}</p>
+                            <p class="text-center text-success fs-5">${sucMsg}</p>
                             <c:remove var="sucMsg" scope="session"/>
                         </c:if>
 
                         <c:if test="${not empty errorMsg }">
-                            <p class="text-center text-danger fs-3">${errorMsg}</p>
+                            <p class="text-center text-danger fs-5">${errorMsg}</p>
                             <c:remove var="errorMsg" scope="session"/>
                         </c:if>
 
