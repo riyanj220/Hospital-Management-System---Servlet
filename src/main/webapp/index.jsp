@@ -17,7 +17,7 @@
         }
         .custom-image {
             position: relative;
-            top: -38px;
+            top: -42px;
             width: 115%; /* Make the image smaller, adjust percentage as needed */
         }
     </style>

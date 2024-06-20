@@ -31,8 +31,8 @@ response.setDateHeader("Expires", 0);
         
         .backImg {
             background: Linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("img/background.jpg");
-            height: 20vh;
+            url("img/user_appoint_banner.jpg");
+            height: 35vh;
             width: 100%;
             background-size: cover;
             background-repeat: no-repeat;
@@ -142,7 +142,7 @@ response.setDateHeader("Expires", 0);
                             </c:if> -->
                                 
                             <c:if test="${not empty userObj }">
-                                <button class="col-md-6 offset-md-3 btn btn-success">Confirm</button> 
+                                <button class="col-md-6 offset-md-3 btn btn-primary">Confirm</button> 
                             </c:if>
                                 
                         </form>

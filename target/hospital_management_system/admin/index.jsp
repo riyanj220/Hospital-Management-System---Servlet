@@ -14,9 +14,47 @@
     <%@include file="../component/allcss.jsp"%>
 
     <style type = "text/css">
+        body {
+            background: url('../img/admin_dashboard.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+
+        .container {
+            padding-top: 150px; /* Add padding to move content down */
+        }
+
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
+            background-color: navy; /* Set card background color to light green */
+            border: 4px solid white;
+        }
+
+        .point-card .card-body {
+            color: white; /* Set text color to black */
+        }
+
+        .point-card .card-body i {
+            color: white; /* Set icon color to black */
+        }
+
+        .dashboard-heading {
+            background-color: navy;; 
+            padding: 10px;
+            border-radius: 10px; 
+            display: inline-block;
+            margin: 0 auto; 
+            width: fit-content; 
+            text-align: center;
+            margin-top: 50px;
+            border: 4px solid white;
+            color: white;
+        }
+
+        .dashboard-container {
+            padding-top: 100px;
         }
     </style>
 
@@ -27,10 +65,12 @@
     <c:if test ="${empty adminObj}">
         <c:redirect url="../admin_login.jsp"></c:redirect>
     </c:if>
-    
-    <div class="container p-5">
-        <p class = "text-center fs-3">Admin Dashboard</p>
 
+    <div class="d-flex justify-content-center">
+        <p class="text-center fs-3 dashboard-heading">Admin Dashboard</p>
+    </div>
+    
+    <div class="container dashboard-container">
         <c:if test="${not empty errorMsg}">
             <p class="fs-3 text-center text-danger">${errorMsg}</p>
             <c:remove var="errorMsg" scope="session" />
@@ -47,7 +87,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card point-card">
-                    <div class="card-body text-center text-success"> <i class="fas fa-user-md fa-3x"></i> <br> <p class="fs-4 text-center">
+                    <div class="card-body text-center "> <i class="fas fa-user-md fa-3x"></i> <br> <p class="fs-4 text-center">
                         Doctors <br><%=dao.countDoctor()%>
                     </p>
                     </div>
@@ -57,7 +97,7 @@
             
             <div class="col-md-4">
                 <div class="card point-card">
-                    <div class="card-body text-center text-success"> <i class="fas fa-user-circle fa-3x"></i><br> <p class="fs-4 text-center">
+                    <div class="card-body text-center "> <i class="fas fa-user-circle fa-3x"></i><br> <p class="fs-4 text-center">
                         Users <br><%=dao.countUsers()%>
                     </p>
                     </div>
@@ -67,7 +107,7 @@
             
             <div class="col-md-4">
                 <div class="card point-card">
-                    <div class="card-body text-center text-success"> <i class="far fa-calendar-check fa-3x"></i><br> <p class="fs-4 text-center">
+                    <div class="card-body text-center "> <i class="far fa-calendar-check fa-3x"></i><br> <p class="fs-4 text-center">
                         Total Appointments <br><%=dao.countAppointment()%>
                         </p>
                     </div>
@@ -78,7 +118,7 @@
             
             <div class="col-md-4 mt-2">
                 <div class="card point-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div class="card-body text-center text-success">
+                    <div class="card-body text-center ">
                         <i class="fa-solid fa-notes-medical fa-3x"></i><br> <p class="fs-4 text-center">
                         Specialist <br><%=dao.countSpecialist()%>
                         </p>

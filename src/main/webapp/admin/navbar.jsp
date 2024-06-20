@@ -14,10 +14,10 @@
 }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">
-            <i class="fas fa-clinic-medical"></i> Medi Home
+            <i class="fas fa-clinic-medical"></i> Home
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -27,13 +27,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"> 
                     <a class="nav-link active" href="index.jsp">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-            </ul>
+            </ul> -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"> 
                     <a class="nav-link active" href="doctor.jsp"> 

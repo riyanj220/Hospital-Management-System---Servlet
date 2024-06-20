@@ -20,6 +20,13 @@
     <%@include file="../component/allcss.jsp"%>
 
     <style type = "text/css">
+        body {
+            background: url('../img/doctor_index.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
@@ -66,7 +73,7 @@
 
                                 <input type ="hidden" value="${doctObj.id}" name="uid">
 
-                                <button class="btn btn-success col-md-12">Confirm</button>
+                                <button class="btn btn-primary col-md-12">Confirm</button>
                             </form>
                         </div>
                 </div>
@@ -128,7 +135,7 @@
                             
                             <input type="hidden" name="id" value="${doctObj.id}">
 
-                            <button type="submit" class="btn btn-success">Update</button>
+                            <button type="submit" class="btn btn-primary col-md-12">Update</button>
                         </form>
 
                     </div>

@@ -13,11 +13,22 @@
     <%@include file="../component/allcss.jsp"%>
 
     <style type = "text/css">
+        body {
+            background: url('img/user_pw_change.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
         }
-
+        .container {
+            margin-top: 50px;
+            border-radius: 20px; 
+            
+        }
+        
     </style>
 
 </head>
@@ -59,7 +70,7 @@
 
                                 <input type ="hidden" value="${userObj.id}" name="uid">
 
-                                <button class="btn btn-success col-md-12">Confirm</button>
+                                <button class="btn btn-primary col-md-12">Confirm</button>
                             </form>
                         </div>
                 </div>

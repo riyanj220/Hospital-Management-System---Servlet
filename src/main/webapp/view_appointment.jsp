@@ -24,8 +24,8 @@
         }
         .backImg {
             background: Linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("img/background.jpg");
-            height: 20vh;
+            url("img/user_appoint_banner.jpg");
+            height: 35vh;
             width: 100%;
             background-size: cover;
             background-repeat: no-repeat;

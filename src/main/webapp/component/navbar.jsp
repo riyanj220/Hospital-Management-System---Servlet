@@ -33,16 +33,16 @@
           
           <c:if test="${not empty userObj}">
 
-            <li class="nav-item">
+            <li class="nav-item" style="margin-right: 20px;">
               <a class="nav-link active" aria-current="page" href="view_appointment.jsp"><i class="fa-solid fa-calendar-check"></i> View Appointment</a>
             </li>        
 
-            <li class="nav-item">
+            <li class="nav-item"style="margin-right: 20px;">
               <a class="nav-link active" aria-current="page" href="user_appointment.jsp"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
             </li>
 
-            <div class="dropdown active">
-              <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown active" style="margin-right: 20px;">
+              <button class="btn btn-primary dropdown-toggle bg-white text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class ="fa-solid fa-circle-user"></i> ${userObj.fullName}
               </button>
               <ul class="dropdown-menu">
