@@ -1,20 +1,23 @@
 # Features For Users:
 
-User authentication 🔑 <br>
-Appointment booking 📅 <br>
-Appointment viewing 👁️ <br>
-Appointment status 📋 <br>
+🔑 User authentication  <br>
+📅 Appointment booking  <br>
+👁️  Appointment viewing  <br>
+📋 Appointment status  <br>
 
 # Features For Doctors:
-User Authentication 🔐 <br>
-View patients 👨‍⚕️👩‍⚕️ <br>
-Patient Comment 💬 <br>
-Profile Edit and change password 📝🔒 <br>
+🔐 User Authentication  <br>
+👨‍⚕️ View patients  <br>
+💬 Patient Comment  <br>
+📝 Profile Edit and change password <br>
 
 # Features For Admin:
-View, Edit, Add or delete doctor 👩‍💼➕📝❌ <br>
-Patient details 🗂️ <br>
-Add specialist 🩺➕ <br>
+👩‍💼 View Doctors <br> 
+📝 Edit Doctors <br>
+➕ Add Doctors <br>
+❌ Delete Doctors <br>
+🗂️ Patient details  <br>
+🩺 Add specialist  <br>
 
 # Screenshots:
 ### Home:
