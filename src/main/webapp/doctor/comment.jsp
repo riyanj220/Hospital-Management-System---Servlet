@@ -22,7 +22,7 @@
 
         .backImg {
             background: Linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/background.jpg");
+            url("../img/user_appoint_banner.jpg");
             height: 20vh;
             width: 100%;
             background-size: cover;
@@ -38,7 +38,7 @@
         <c:redirect url="../doctor_login.jsp"></c:redirect>
     </c:if>
 
-    <%@include file="../component/navbar.jsp"%>
+    <%@include file="navbar.jsp"%>
 
     <div class="container-fulid backImg p-5"> 
         <p class="text-center fs-2 text-white"></p> 

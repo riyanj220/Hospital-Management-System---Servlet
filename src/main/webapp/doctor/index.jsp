@@ -28,7 +28,7 @@
         .point-card {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
-            background-color: orange; /* Set card background color to light green */
+            background-color: navy; /* Set card background color to light green */
             border: 4px solid white;
         }
 
@@ -41,7 +41,7 @@
         }
 
         .dashboard-heading {
-            background-color: orange;; 
+            background-color: navy;; 
             padding: 10px;
             border-radius: 10px; 
             display: inline-block;
