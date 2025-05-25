@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+
+  <!-- Roles -->
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+
+  <!-- Existing users -->
+  <user username="tomcat" password="changeme1" roles="tomcat"/>
+  <user username="both" password="changeme2" roles="tomcat,role1"/>
+  <user username="role1" password="changeme3" roles="role1"/>
+
+  <!-- New admin user for Maven Tomcat plugin deployment -->
+  <user username="admin" password="admin" roles="manager-script"/>
+
+</tomcat-users>

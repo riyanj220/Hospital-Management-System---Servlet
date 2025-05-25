@@ -29,70 +29,71 @@
     <div class="container-fluid p-3"> 
         <div class="row">
             <div class="col-md-4">
-                <div class="card paint-card"> 
+                <div class="card paint-card shadow-sm">
                     <div class="card-body">
-                        <p class="fs-3 text-center">Add Doctor</p>
+                        <h4 class="text-center mb-4 fw-bold">Add Doctor</h4>
 
                         <c:if test="${not empty errorMsg}">
-                            <p class="fs-3 text-center text-danger">${errorMsg}</p> 
-                            <c:remove var="errorMsg" scope="session" />
+                            <div class="alert alert-danger text-center py-2">${errorMsg}</div>
+                            <c:remove var="errorMsg" scope="session"/>
                         </c:if>
-                        
-                        <c:if test="${not empty sucMsg}">
-                            <div class="fs-3 text-center text-success" role="alert">${sucMsg}
 
-                            </div> 
-                            <c:remove var="sucMsg" scope="session" />
+                        <c:if test="${not empty sucMsg}">
+                            <div class="alert alert-success text-center py-2">${sucMsg}</div>
+                            <c:remove var="sucMsg" scope="session"/>
                         </c:if>
 
                         <form action="../addDoctor" method="post">
                             <div class="mb-3">
-                                <label class="form-Label ">Full name</label> <input type="text" required name="fullname" class="form-control">
-                            </div>
-                        
-                            <div class="mb-3">
-                                <label class="form-label">Date of birth</label> <input type="date" required name="dob" class="form-control">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="fullname" class="form-control" required />
                             </div>
 
-                            
                             <div class="mb-3">
-                                <label class="form-label">Qualification</label> <input required name="qualification" type="text" class="form-control">
+                                <label class="form-label">Date of Birth</label>
+                                <input type="date" name="dob" class="form-control" required />
                             </div>
-                                
-                            <div class="mb-3">
-                                <label class="form-label"> Specialization</label> <select name="spec" required class="form-control">
-                                <option>--select--</option> 
-                                
-                                <% SpecialistDAO dao = new SpecialistDAO(DBConnect.getCon());
-                                    List<Specialist> list=dao.getAllSpecialist();
 
-                                    for(Specialist s :list)
-                                    {%>
-                                        <option><%=s.getSpecialistName()%></option>
-                                    <%}
-                                %>
-                                
-                                
+                            <div class="mb-3">
+                                <label class="form-label">Qualification</label>
+                                <input type="text" name="qualification" class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Specialization</label>
+                                <select name="spec" class="form-control" required>
+                                    <option disabled selected>--select--</option>
+                                    <%
+                                        SpecialistDAO dao = new SpecialistDAO(DBConnect.getCon());
+                                        List<Specialist> list = dao.getAllSpecialist();
+                                        for(Specialist s : list) {
+                                    %>
+                                        <option><%= s.getSpecialistName() %></option>
+                                    <% } %>
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-Label ">Email</label> <input type="text" required name="email" class="form-control">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" required />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-Label ">Mobile No.</label> <input type="text" required name="mobno" class="form-control">
+                                <label class="form-label">Mobile No.</label>
+                                <input type="text" name="mobno" class="form-control" required />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-Label ">Password</label> <input required name="password" type="password" class="form-control">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" required />
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="submit" class="btn btn-primary col-12">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
+
 
             
             <div class="col-md-8">
