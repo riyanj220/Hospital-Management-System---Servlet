@@ -21,34 +21,35 @@
 
 # Screenshots:
 ### Home:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/df8c81fc-cc1b-44c2-b4b8-3dc75a37525b)
+![image](https://github.com/user-attachments/assets/5323fe68-0cfe-4c6f-a906-4397bb57ce2a)
 
 ### Appointment booking:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/29779cca-5c08-4e64-a0de-54c3cbdf267e)
+![image](https://github.com/user-attachments/assets/aa60f971-b47d-4057-9e5b-a9f676ab5b2f)
 
 ### Appointment Viewing:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/78f4bfd6-fd7e-4bcc-b7a3-006a6a564987)
+![image](https://github.com/user-attachments/assets/59092bdb-4b59-4a50-a46b-c8b7bf11515f)
 
 ### Doctor Dashboard:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/44f573cf-4030-4848-ba8f-61362414feb9)
+![image](https://github.com/user-attachments/assets/7552dbdb-ed5a-44dc-beb8-e3570b6187d1)
 
 ### Patient Appointments:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/06c0b85f-9c73-45bd-9fb3-d955a8efe4e8)
+![image](https://github.com/user-attachments/assets/5bf26d22-ba2a-47fd-8e36-1244825546f6)
 
 ### Patient Comment:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/b65a6029-3d25-4083-8184-fdd7531d9933)
+![image](https://github.com/user-attachments/assets/84fdd67e-b4b4-4e7c-9d4e-1e76fa83b25d)
 
 ### Profile Settings:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/e302f8f8-c484-4093-98de-cf7ec35c1f74)
+![image](https://github.com/user-attachments/assets/809ed807-9a8e-4bdc-99d5-8014e8f35eba)
 
 ### Admin Dashboard:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/9e55c280-e14f-4096-b7d1-041d74c28400)
+![image](https://github.com/user-attachments/assets/94c9207c-59c3-4415-afe7-d04872236820)
 
 ### Add/View/Delete Doctors:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/3fb1f861-14c2-4682-9692-0fac38aaa160)
+![image](https://github.com/user-attachments/assets/863399f6-d911-4a16-a7a7-c26bf657c96a)
 
 ### Edit Doctor details:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/8da7fdcb-f060-4b63-bc6b-39aee90c968e)
+![image](https://github.com/user-attachments/assets/322eb1bf-764d-4cd3-98db-9b5367b262a1)
 
 ### Patient Details:
-![image](https://github.com/riyanj220/Hospital-Management-System---Servlet/assets/142132463/71ef518f-48ff-4a4c-923f-88ddfa6af18a)
+![image](https://github.com/user-attachments/assets/df3c6151-bcf8-4f6c-9615-0a4a6079f884)
+
