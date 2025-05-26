@@ -47,10 +47,10 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/img1.jpg" class="d-block w-100" alt="..." height="500px">
+      <img src="img/img2.jpg" class="d-block w-100" alt="..." height="500px">
     </div>
     <div class="carousel-item">
-      <img src="img/img2.jpg" class="d-block w-100" alt="..." height="500px">
+      <img src="img/img3.jpg" class="d-block w-100" alt="..." height="500px">
     </div>
     <div class="carousel-item">
       <img src="img/img4.jpg" class="d-block w-100" alt="..." height="500px">

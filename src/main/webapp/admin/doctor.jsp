@@ -99,7 +99,7 @@
             <div class="col-md-8">
                 <div class="card paint-card"> 
                     <div class="card-body">
-                        <p class="fs-3 text-center">Doctor Details</p> 
+                        <p class="fs-3 text-center fw-bold">Doctor Details</p>
                         <table class="table">
                             <thead> 
                                 <tr>
