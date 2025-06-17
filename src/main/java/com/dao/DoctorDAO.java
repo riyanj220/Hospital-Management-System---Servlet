@@ -3,11 +3,13 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.Doctor;
 
+@SuppressWarnings("ALL")
 public class DoctorDAO {
 
     private Connection con;
@@ -40,7 +42,7 @@ public class DoctorDAO {
             
             }
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
 
         return f;
@@ -48,7 +50,7 @@ public class DoctorDAO {
     }
 
     public List<Doctor> getAllDoctor() {
-        List<Doctor> list = new ArrayList<Doctor>();
+        List<Doctor> list = new ArrayList<>();
         
         Doctor d = null;
 
@@ -136,7 +138,7 @@ public class DoctorDAO {
             
             }
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
 
         return f;
@@ -373,6 +375,24 @@ public class DoctorDAO {
 
         return f;
 
+    }
+
+
+    public String getDoctorNameById(int doctorId) {
+        String query = "SELECT full_name FROM doctor WHERE id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, doctorId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String doctorName = rs.getString("full_name");
+                return doctorName;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
