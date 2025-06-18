@@ -10,93 +10,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment</title>
-
+    <title>Patient Comment</title>
     <%@ include file="../component/allcss.jsp" %>
 
-    <style type="text/css">
+    <style>
         .point-card {
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            border: none;
+            padding: 30px;
         }
 
         .backImg {
-            background: Linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
             url("../img/user_appoint_banner.jpg");
             height: 20vh;
             width: 100%;
             background-size: cover;
             background-repeat: no-repeat;
-            
         }
-    
-    </style>
 
+        .form-label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control[readonly] {
+            background-color: #f5f5f5;
+        }
+
+        textarea.form-control {
+            resize: none;
+            border-radius: 8px;
+        }
+
+        .submit-btn {
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-    <c:if test="${empty doctObj}">
-        <c:redirect url="../doctor_login.jsp"></c:redirect>
-    </c:if>
 
-    <%@include file="navbar.jsp"%>
+<c:if test="${empty doctObj}">
+    <c:redirect url="../doctor_login.jsp"></c:redirect>
+</c:if>
 
-    <div class="container-fulid backImg p-5"> 
-        <p class="text-center fs-2 text-white"></p> 
-    </div>
+<%@include file="navbar.jsp"%>
 
-    
-    <div class="container p-3">
-        <div class="row">
-            <div class="col-md-6 offset-md-3"> 
-                <div class="card point-card"> 
-                    
-                    <div class="card-body">
-                        <p class="text-center fs-4">Patient Comment</p>
+<div class="container-fluid backImg d-flex align-items-center justify-content-center">
 
-                        <%
-                            int id = Integer.parseInt(request.getParameter("id"));
-                            AppointmentDAO dao = new AppointmentDAO(DBConnect.getCon());
+</div>
 
-                            Appointment ap = dao.getAppointmentById(id);
-                        %>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card point-card">
+                <div class="card-body">
+                    <h4 class="text-center mb-4">Patient Comment</h4>
 
-                        <form class="row" action="../updateStatus" method="post"> 
-                            <div class="col-md-6">
-                                <label>Patient Name</label> <input type="text" readonly value="<%=ap.getFullName()%>"
-                                class="form-control">
-                            </div>
-        
-                             <div class="col-md-6">
-                                <label>Age</label> <input type="text" value="<%=ap.getAge()%>" readonly
-                                class="form-control">
-                            </div>
+                    <%
+                        int id = Integer.parseInt(request.getParameter("id"));
+                        AppointmentDAO dao = new AppointmentDAO(DBConnect.getCon());
+                        Appointment ap = dao.getAppointmentById(id);
+                    %>
 
-                            
-                            <div class="col-md-6">
-                                <br> <label>Mobile No.</label> <input type="text" readonly value="<%=ap.getPhNo()%>" class="form-control">
-                            </div>
+                    <form class="row g-3" action="../updateStatus" method="post">
+                        <div class="col-md-6">
+                            <label class="form-label">Patient Name</label>
+                            <input type="text" readonly value="<%=ap.getFullName()%>" class="form-control">
+                        </div>
 
-                            <div class="col-md-6">
-                                <br> <label>Disease</label> <input type="text" readonly value="<%=ap.getDiseases()%>" class="form-control">
-                            </div>
-                                
-                            <div class="col-md-12">
-                                <br> <label>Comment</label>
-                                <textarea required name="comm" class="form-control" row="3" cols=""></textarea>
-                            </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Age</label>
+                            <input type="text" readonly value="<%=ap.getAge()%>" class="form-control">
+                        </div>
 
-                            <input type="hidden" name="id" value="<%=ap.getId()%>"> 
-                            <input type="hidden" name="did" value="<%=ap.getDoctorId()%>">
+                        <div class="col-md-6">
+                            <label class="form-label">Mobile No.</label>
+                            <input type="text" readonly value="<%=ap.getPhNo()%>" class="form-control">
+                        </div>
 
-                            <button class=" mt-3 btn btn-success col-md-6 offset-md-3">Submit</button>
-                                
-                        </form>
-                    </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Disease</label>
+                            <input type="text" readonly value="<%=ap.getDiseases()%>" class="form-control">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Comment</label>
+                            <textarea name="comm" required rows="4" class="form-control" placeholder="Write your observations or treatment notes..."></textarea>
+                        </div>
+
+                        <input type="hidden" name="id" value="<%=ap.getId()%>">
+                        <input type="hidden" name="did" value="<%=ap.getDoctorId()%>">
+
+                        <div class="col-md-12 text-center mt-3">
+                            <button class="btn btn-success w-50 submit-btn">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-        
-    
+</div>
+
 </body>
 </html>

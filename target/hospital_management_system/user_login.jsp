@@ -6,79 +6,128 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>User login</title>
+    <title>User Login</title>
     <%@include file="../component/allcss.jsp"%>
 
-    <style type = "text/css">
-
+    <style>
         body {
-            background: url('img/medical2.jpg') no-repeat center center fixed;
-            background-size: 100% 100%;
-            margin: 0; /* Remove default body margin */
-            padding: 0; /* Remove default body padding */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
         }
 
-        .container {
-            margin-top: 50px;
-            border-radius: 20px; 
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .point-card {
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-card h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 500;
+        }
+
+        .login-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login-footer a {
+            text-decoration: none;
+            font-weight: 500;
         }
     </style>
-
 </head>
+
 <body>
+    <div class="login-page">
+        <%@include file="../component/navbar.jsp"%>
 
-    <%@include file="../component/navbar.jsp"%>
-    
-    <div class ="container p-5">
+        <!-- Flash Message -->
+        <c:if test="${not empty sucMsg || not empty errorMsg}">
+          <div id="flashMessage" class="text-center" style="
+              background-color: #e2e3e5;
+              color: <c:out value='${not empty sucMsg ? "#198754" : "#dc3545"}'/>;
+              font-weight: 600;
+              font-size: 17px;
+              padding: 16px 12px;  /* Increased padding */
+              margin-bottom: 20px;
+              border-bottom: 1px solid #ccc;
+            ">
+            <c:out value="${sucMsg}" />
+            <c:out value="${errorMsg}" />
+          </div>
 
-        <div class ="row">
+          <!-- Remove messages from session -->
+          <c:remove var="sucMsg" scope="session" />
+          <c:remove var="errorMsg" scope="session" />
 
-            <div class ="col-md-4 offset-md-4">
+          <!-- Auto-hide script -->
+          <script>
+            setTimeout(() => {
+              const flash = document.getElementById("flashMessage");
+              if (flash) {
+                flash.style.transition = "opacity 0.5s ease-out";
+                flash.style.opacity = 0;
+                setTimeout(() => flash.remove(), 500);
+              }
+            }, 4000); // 4 seconds
+          </script>
+        </c:if>
 
-                <div class ="card point-card">
 
-                    <div class = "card-body">
-                        <p class = "fs-4 text-center">User Portal</p>
+        <div class="login-wrapper">
+            <div class="login-card">
+                <h3>User Portal</h3>
 
-                        <c:if test="${not empty sucMsg }">
-                            <p class="text-center text-success fs-5">${sucMsg}</p>
-                            <c:remove var="sucMsg" scope="session"/>
-                        </c:if>
-
-                        <c:if test="${not empty errorMsg }">
-                            <p class="text-center text-danger fs-5">${errorMsg}</p>
-                            <c:remove var="errorMsg" scope="session"/>
-                        </c:if>
-
-                    <form action = "userlogin" method="post">
-                        <div class = "mb-3">
-                            <label class = "form-label">Email address</label> <input required
-                            name = "email" type="email" class="form-control"> 
-                        </div>
-
-                        <div class = "mb-3">
-                            <label class = "form-label">Password</label> <input required
-                            name = "password" type="password" class="form-control"> 
-                        </div>
-
-                        <button type = "submit" class="btn bg-primary text-white col-md-12">Login </button> 
-                        
-                    </form>
-                    <br> Don't have an account? <a href ="signup.jsp" class ="text-decoration-none">Create one</a>
-
+                <form action="userlogin" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" required />
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary col-12">Login</button>
+                </form>
+
+                <div class="login-footer mt-3">
+                    Don't have an account?
+                    <a href="signup.jsp" class="text-primary">Create one</a>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </body>
 </html>

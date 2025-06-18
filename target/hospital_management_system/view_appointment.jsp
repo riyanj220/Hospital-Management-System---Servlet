@@ -67,7 +67,7 @@
                                     <th scope="col">Appointment Date</th> 
                                     <th scope="col">Disease</th> 
                                     <th scope="col">Doctor Name</th> 
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Visit Status</th>
 
                                 </tr>
                             </thead>

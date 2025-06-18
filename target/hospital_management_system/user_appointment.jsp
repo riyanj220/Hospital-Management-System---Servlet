@@ -1,20 +1,22 @@
-<%
-response.setHeader("Cache-Control", "no-cache");
-response.setHeader("Cache-Control", "no-store");
-response.setHeader("Pragma", "no-cache");
-response.setDateHeader("Expires", 0);
-%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page import="com.entity.Doctor"%>
 <%@ page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@ page import="com.dao.SpecialistDAO" %>
 <%@ page import="com.entity.Specialist" %>
 <%@ page import="com.db.DBConnect" %>
 <%@ page import="com.dao.DoctorDAO" %>
-<%@ page import="com.entity.Doctor" %>
+<%@ page import="java.util.ArrayList" %>
+
+
+<%
+    List<String> unavailableDates = (List<String>) request.getAttribute("unavailableDates");
+    if (unavailableDates == null) {
+        unavailableDates = new ArrayList<>();
+    }
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,136 +24,207 @@ response.setDateHeader("Expires", 0);
     <meta charset="ISO-8859-1">
     <title>User Appointment</title>
     <%@ include file="../component/allcss.jsp" %>
-    
-    <style type="text/css">
+
+    <style>
         .point-card {
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
         }
 
-        
-        .backImg {
-            background: Linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("img/user_appoint_banner.jpg");
-            height: 35vh;
-            width: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            
+        .appointment-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
-        .small-img {
-            width: 600px; 
-            height: auto; 
+
+        .appointment-form h3 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #343a40;
+        }
+
+        .form-control, select, textarea {
+            border-radius: 8px !important;
+        }
+
+        .btn-confirm {
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 500;
+        }
+
+        .left-image {
+            max-width: 100%;
+            height: 650px;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-form {
+                margin-top: 30px;
+            }
         }
     </style>
+
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+           <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+     <script>
+         $(document).ready(function() {
+             $("input[name='appoint_date']").prop('disabled', true).attr("placeholder", "Select A doctor first");
+
+             $("select[name='doct']").change(function() {
+                 var doctorId = $(this).val();
+                 if (doctorId) {
+                     $("input[name='appoint_date']").prop('disabled', false).removeAttr("placeholder");
+
+                     $.ajax({
+                         url: "getUnavailableDates",
+                         method: "GET",
+                         data: { doctorId: doctorId },
+                         success: function(response) {
+                             var unavailableDates = response.unavailableDates;
+
+                             // Disable the dates that are fully booked
+                              $("input[name='appoint_date']").datepicker({
+                                 dateFormat: 'yy-mm-dd',
+                                 beforeShowDay: function(date) {
+                                     var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+                                     if (unavailableDates.indexOf(dateString) !== -1) {
+                                         return [false, "", "Unavailable"];
+                                     }
+                                     return [true, "", ""];
+                                 }
+                             });
+                         },
+                         error: function() {
+                             console.log("Error fetching unavailable dates");
+                         }
+                     });
+                 } else {
+                     $("input[name='appoint_date']").prop('disabled', true).attr("placeholder", "Select A Doctor First");
+                 }
+             });
+         });
+     </script>
+
+
+
 </head>
 <body>
-    <%@include file="../component/navbar.jsp"%>
-
-    <div class="container-fulid backImg p-5"> 
-        <p class="text-center fs-2 text-white"></p> 
-    </div>
-
-    <div class="container p-3">
-        <div class="row">
-            <div class="col-md-6 p-5">
-                <img class="small-img" alt="" src="img/doct.jpg">
+<%@include file="../component/navbar.jsp"%>
+ <c:if test="${not empty sucMsg || not empty errorMsg}">
+            <div id="flashMessage" class="text-center" style="
+                background-color: #e2e3e5;
+                color: <c:out value='${not empty sucMsg ? "#198754" : "#dc3545"}'/>;
+                font-weight: 600;
+                font-size: 17px;
+                padding: 16px 12px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #ccc;
+            ">
+                <c:out value="${sucMsg}" />
+                <c:out value="${errorMsg}" />
             </div>
 
-            
-            <div class="col-md-6">
-                <div class="card paint-card">
-                    <div class="card-body">
-                        <p class="text-center fs-3">User Appointment</p> 
-                        
-                        <c:if test="${not empty errorMsg}">
-                            <p class="fs-4 text-center text-danger">${errorMsg}</p> 
-                            <c:remove var="errorMsg" scope="session" />
-                        </c:if>
+            <c:remove var="sucMsg" scope="session" />
+            <c:remove var="errorMsg" scope="session" />
 
-                        <c:if test="${not empty sucMsg}">
-                            <p class="fs-4 text-center text-success">${sucMsg}</p> 
-                            <c:remove var="sucMsg" scope="session" /> 
-                        </c:if>
+            <script>
+                setTimeout(() => {
+                    const flash = document.getElementById("flashMessage");
+                    if (flash) {
+                        flash.style.transition = "opacity 0.5s ease-out";
+                        flash.style.opacity = 0;
+                        setTimeout(() => flash.remove(), 500);
+                    }
+                }, 4000);
+            </script>
+        </c:if>
 
+<div class="container-fluid p-5 bg-light">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="img/doct.jpg" alt="Appointment" class="left-image">
+        </div>
+        <div class="col-md-6">
+            <div class="appointment-form">
+                <h3>User Appointment</h3>
 
-                        
-                        <form class="row g-3" action="addAppointment" method="post">
+                <form class="row g-3" action="addAppointment" method="post">
+                    <input type="hidden" name="userid" value="${userObj.id}">
 
-                            <input type="hidden" name="userid" value="${userObj.id}">
-
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-Label">Full Name</label> <input required type="text" class="form-control" name="fullname">
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label>Gender</label> <select class="form-control" name="gender" required>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-
-                            
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Age</label> <input required type="number" class="form-control" name="age">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Appointment Date</label> <input type="date" class="form-control" required name="appoint_date">
-                            </div>
-
-                            
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-Label"> Email</label> <input required type="email" class="form-control" name="email">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-Label ">Phone No.</label> <input maxlength="10" required type="number" class="form-control" name="phno">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-Label ">Disease</label> <input required type="text" class="form-control" name="diseases">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Doctor</label> 
-                                <select required class="form-control" name="doct">
-                                    <option value="">--select--</option>
-
-                                    <%DoctorDAO dao = new DoctorDAO(DBConnect.getCon());
-                                        List<Doctor>list = dao.getAllDoctor();
-
-                                        for(Doctor d : list)
-                                        {%>
-                                            <option value="<%=d.getId()%>"><%=d.getFullName()%> (<%=d.getSpecialist() %>)</option>
-                                        <%}
-                                    %>
-
-                                    
-                                </select>
-                            </div>
-
-                            
-                            <div class="col-md-12">
-                                <label>Full Address</label>
-                                <textarea required name="address" class="form-control" rows="3" cols=""></textarea>
-                            </div>
-
-                            <!-- <c:if test="${empty userObj}">
-                                <a href="ulogin.jsp" class="col-md-6 offset-md-3 btn btn-success">Submit</a>
-                            </c:if> -->
-                                
-                            <c:if test="${not empty userObj }">
-                                <button class="col-md-6 offset-md-3 btn btn-primary">Confirm</button> 
-                            </c:if>
-                                
-                        </form>
+                    <div class="col-md-6">
+                        <label>Full Name</label>
+                        <input type="text" name="fullname" class="form-control" required />
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        <label>Gender</label>
+                        <select name="gender" class="form-control" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Age</label>
+                        <input type="number" name="age" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Doctor</label>
+                        <select name="doct" class="form-control" required>
+                            <option value="">--select--</option>
+                            <%
+                                DoctorDAO dao = new DoctorDAO(DBConnect.getCon());
+                                List<Doctor> list = dao.getAllDoctor();
+                                for(Doctor d : list) {
+                            %>
+                                <option value="<%= d.getId() %>">
+                                    <%= d.getFullName() %> (<%= d.getSpecialist() %>)
+                                </option>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone No.</label>
+                        <input type="number" maxlength="10" name="phno" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Disease</label>
+                        <input type="text" name="diseases" class="form-control" required />
+                    </div>
+
+
+                   <div class="col-md-6">
+                       <label>Appointment Date</label>
+                       <input type="text" name="appoint_date" class="form-control" required disabled placeholder="Select A Doctor First"/>
+                   </div>
+
+                    <div class="col-md-12">
+                        <label>Full Address</label>
+                        <textarea name="address" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <c:if test="${not empty userObj}">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary btn-confirm col-md-6">Confirm</button>
+                        </div>
+                    </c:if>
+                </form>
             </div>
         </div>
     </div>
-                    
+</div>
 
 </body>
 </html>

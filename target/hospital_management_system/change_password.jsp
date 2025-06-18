@@ -2,81 +2,120 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false"%>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="ISO-8859-1">
     <title>Change Password</title>
-
     <%@include file="../component/allcss.jsp"%>
 
-    <style type = "text/css">
+    <style>
         body {
-            background: url('img/user_pw_change.jpg') no-repeat center center fixed;
-            background-size: 100% 100%;
-            margin: 0; /* Remove default body margin */
-            padding: 0; /* Remove default body padding */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
         }
-        .point-card {
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+
+        .change-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .container {
-            margin-top: 50px;
-            border-radius: 20px; 
-            
+
+        .change-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
+
+        .change-card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .change-card h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 500;
+        }
     </style>
-
 </head>
+
 <body>
-    <%@include file="../component/navbar.jsp"%>
+    <div class="change-page">
+        <%@include file="../component/navbar.jsp"%>
 
-    <c:if test="${empty userObj}">
-        <c:redirect url="user_login.jsp"></c:redirect>
-    </c:if>
+        <c:if test="${empty userObj}">
+            <c:redirect url="user_login.jsp" />
+        </c:if>
 
-    
-    <div class="container p-5">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="card point-card">
+        <!-- Flash Message -->
+        <c:if test="${not empty sucMsg || not empty errorMsg}">
+            <div id="flashMessage" class="text-center" style="
+                background-color: #e2e3e5;
+                color: <c:out value='${not empty sucMsg ? "#198754" : "#dc3545"}'/>;
+                font-weight: 600;
+                font-size: 17px;
+                padding: 16px 12px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #ccc;
+            ">
+                <c:out value="${sucMsg}" />
+                <c:out value="${errorMsg}" />
+            </div>
 
-                    <p class="text-center fs-3">Change Password</p> 
+            <c:remove var="sucMsg" scope="session" />
+            <c:remove var="errorMsg" scope="session" />
 
-                        <c:if test="${not empty sucMsg }">
-                            <p class="text-center text-success fs-5">${sucMsg}</p>
-                            <c:remove var="sucMsg" scope="session"/>
-                        </c:if>
+            <script>
+                setTimeout(() => {
+                    const flash = document.getElementById("flashMessage");
+                    if (flash) {
+                        flash.style.transition = "opacity 0.5s ease-out";
+                        flash.style.opacity = 0;
+                        setTimeout(() => flash.remove(), 500);
+                    }
+                }, 4000);
+            </script>
+        </c:if>
 
-                        <c:if test="${not empty errorMsg }">
-                            <p class="text-center text-danger fs-5">${errorMsg}</p>
-                            <c:remove var="errorMsg" scope="session"/>
-                        </c:if>
+        <div class="change-wrapper">
+            <div class="change-card">
+                <h3>Change Password</h3>
 
-                        <div class="card-body">
+                <form action="changePassword" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Enter Old Password</label>
+                        <input type="password" name="oldPassword" class="form-control" required />
+                    </div>
 
-                            <form action="changePassword" method="post">
-                                <div class="mb-3">
-                                    <label>Enter Old Password</label> <input type="text" name="oldPassword" class="form-control" required>
-                                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Enter New Password</label>
+                        <input type="password" name="newPassword" class="form-control" required />
+                    </div>
 
-                                <div class="mb-3">
-                                    <label>Enter New Password</label> <input type="text" name="newPassword" class="form-control" required>
-                                </div>
+                    <input type="hidden" name="uid" value="${userObj.id}" />
 
-                                <input type ="hidden" value="${userObj.id}" name="uid">
-
-                                <button class="btn btn-primary col-md-12">Confirm</button>
-                            </form>
-                        </div>
-                </div>
+                    <button type="submit" class="btn btn-primary col-12">Confirm</button>
+                </form>
             </div>
         </div>
     </div>
-    
 </body>
 </html>

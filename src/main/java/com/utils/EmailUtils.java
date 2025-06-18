@@ -3,13 +3,26 @@ package com.utils;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 import java.util.Properties;
+//import io.github.cdimascio.dotenv.Dotenv;
 
 @SuppressWarnings("ALL")
 public class EmailUtils {
 
     public static boolean sendEmail(String to, String subject, String body) {
+
+//        Dotenv dotenv = Dotenv.configure().load();
+//
+//        System.out.println("EMAIL_USERNAME: " + dotenv.get("EMAIL_USERNAME"));
+//        System.out.println("EMAIL_PASSWORD: " + dotenv.get("EMAIL_PASSWORD"));
+
+//
+//        final String username = dotenv.get("EMAIL_USERNAME");
+//        final String password = dotenv.get("EMAIL_PASSWORD");
+
         final String username = "riyanjamil220@gmail.com";
-        final String password = "otjk qhvd pcvf mnkt";
+        final String password = "fnsm aeym trmv mmev";
+
+
 
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");

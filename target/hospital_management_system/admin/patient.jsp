@@ -32,7 +32,7 @@
     <div class="col-md-12">
         <div class="card point-card"> 
             <div class="card-body">
-                <p class="fs-3 text-center">Patients Details</p> 
+                <p class="fs-3 text-center fw-bold">Patients Details</p>
                 
                 <table class="table">
                     <thead> 
