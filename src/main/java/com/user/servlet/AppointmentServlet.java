@@ -1,6 +1,9 @@
 package com.user.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -9,6 +12,7 @@ import com.dao.AppointmentDAO;
 import com.dao.DoctorDAO;
 import com.db.DBConnect;
 import com.entity.Appointment;
+import com.google.gson.Gson;
 import com.utils.EmailUtils;
 
 @WebServlet("/addAppointment")
@@ -67,11 +71,28 @@ public class AppointmentServlet extends HttpServlet {
         int doctor_id = Integer.parseInt(req.getParameter("doct"));
         String address = req.getParameter("address");
 
-        // Fetch doctor's name from the DoctorDAO based on doctor_id
+        // Check existing appointments for the selected date
+        AppointmentDAO appointmentDAO = new AppointmentDAO(DBConnect.getCon());
+        int existingAppointments = appointmentDAO.getAppointmentsCountForDoctorOnDate(doctor_id, appoint_date);
+//        System.out.println("Existing appointments on " + appoint_date + ": " + existingAppointments); // Debug: Print existing appointments
+
+        if (existingAppointments > 6) {
+            HttpSession session = req.getSession();
+            session.setAttribute("errorMsg", "The doctor is fully booked on this date. Please select another doctor or date.");
+            resp.sendRedirect("user_appointment.jsp");
+            return;
+        }
+
+        // Get unavailable dates for the selected doctor
+        List<String> unavailableDates = appointmentDAO.getUnavailableDatesForDoctor(doctor_id);
+//        System.out.println("Unavailable dates for Doctor " + doctor_id + ": " + unavailableDates); // Debug: Print unavailable dates
+
+        // Pass unavailable dates to the JSP
+        req.setAttribute("unavailableDates", unavailableDates);
+
         DoctorDAO doctorDAO = new DoctorDAO(DBConnect.getCon());
         String doctorName = doctorDAO.getDoctorNameById(doctor_id);
 
-        // If the doctor name is not found, set it to "Unknown"
         if (doctorName == null) {
             doctorName = "Unknown";
         }
@@ -83,9 +104,7 @@ public class AppointmentServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        // Adding the appointment to the database
         if (service.addAppointment(ap)) {
-            // Send confirmation email with doctor's name
             String subject = "Appointment Confirmation";
             String body = "<html>"
                     + "<body style='font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333;'>"
@@ -126,3 +145,5 @@ public class AppointmentServlet extends HttpServlet {
         }
     }
 }
+
+

@@ -7,6 +7,16 @@
 <%@ page import="com.entity.Specialist" %>
 <%@ page import="com.db.DBConnect" %>
 <%@ page import="com.dao.DoctorDAO" %>
+<%@ page import="java.util.ArrayList" %>
+
+
+<%
+    List<String> unavailableDates = (List<String>) request.getAttribute("unavailableDates");
+    if (unavailableDates == null) {
+        unavailableDates = new ArrayList<>();
+    }
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -56,6 +66,53 @@
             }
         }
     </style>
+
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+           <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+     <script>
+         $(document).ready(function() {
+             $("input[name='appoint_date']").prop('disabled', true).attr("placeholder", "Select A doctor first");
+
+             $("select[name='doct']").change(function() {
+                 var doctorId = $(this).val();
+                 if (doctorId) {
+                     $("input[name='appoint_date']").prop('disabled', false).removeAttr("placeholder");
+
+                     $.ajax({
+                         url: "getUnavailableDates",
+                         method: "GET",
+                         data: { doctorId: doctorId },
+                         success: function(response) {
+                             var unavailableDates = response.unavailableDates;
+
+                             // Disable the dates that are fully booked
+                              $("input[name='appoint_date']").datepicker({
+                                 dateFormat: 'yy-mm-dd',
+                                 beforeShowDay: function(date) {
+                                     var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+                                     if (unavailableDates.indexOf(dateString) !== -1) {
+                                         return [false, "", "Unavailable"];
+                                     }
+                                     return [true, "", ""];
+                                 }
+                             });
+                         },
+                         error: function() {
+                             console.log("Error fetching unavailable dates");
+                         }
+                     });
+                 } else {
+                     $("input[name='appoint_date']").prop('disabled', true).attr("placeholder", "Select A Doctor First");
+                 }
+             });
+         });
+     </script>
+
+
+
 </head>
 <body>
 <%@include file="../component/navbar.jsp"%>
@@ -116,24 +173,7 @@
                         <label>Age</label>
                         <input type="number" name="age" class="form-control" required />
                     </div>
-                    <div class="col-md-6">
-                        <label>Appointment Date</label>
-                        <input type="date" name="appoint_date" class="form-control" required />
-                    </div>
 
-                    <div class="col-md-6">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label>Phone No.</label>
-                        <input type="number" maxlength="10" name="phno" class="form-control" required />
-                    </div>
-
-                    <div class="col-md-6">
-                        <label>Disease</label>
-                        <input type="text" name="diseases" class="form-control" required />
-                    </div>
                     <div class="col-md-6">
                         <label>Doctor</label>
                         <select name="doct" class="form-control" required>
@@ -149,6 +189,26 @@
                             <% } %>
                         </select>
                     </div>
+
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone No.</label>
+                        <input type="number" maxlength="10" name="phno" class="form-control" required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Disease</label>
+                        <input type="text" name="diseases" class="form-control" required />
+                    </div>
+
+
+                   <div class="col-md-6">
+                       <label>Appointment Date</label>
+                       <input type="text" name="appoint_date" class="form-control" required disabled placeholder="Select A Doctor First"/>
+                   </div>
 
                     <div class="col-md-12">
                         <label>Full Address</label>

@@ -3,13 +3,14 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.Appointment;
 
 public class AppointmentDAO {
-    private Connection con;
+    private final Connection con;
 
     public AppointmentDAO(Connection con) {
         super();
@@ -55,7 +56,7 @@ public class AppointmentDAO {
 
     public List<Appointment> getAllAppointmentByLoginUser(int userId)
     {
-        List<Appointment> list = new ArrayList<Appointment>();
+        List<Appointment> list = new ArrayList<>();
 
         Appointment ap = null;
 
@@ -93,7 +94,7 @@ public class AppointmentDAO {
 
     public List<Appointment> getAllAppointmentByDoctorLogin(int doctorId)
     {
-        List<Appointment> list = new ArrayList<Appointment>();
+        List<Appointment> list = new ArrayList<>();
 
         Appointment ap = null;
 
@@ -192,7 +193,7 @@ public class AppointmentDAO {
 
     public List<Appointment> getAllAppointment()
     {
-        List<Appointment> list = new ArrayList<Appointment>();
+        List<Appointment> list = new ArrayList<>();
 
         Appointment ap = null;
 
@@ -225,5 +226,40 @@ public class AppointmentDAO {
 
         return list;
     }
+
+    public int getAppointmentsCountForDoctorOnDate(int doctorId, String date) {
+        String query = "SELECT COUNT(*) FROM appointment WHERE doctor_id = ? AND appoint_date = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, doctorId);
+            ps.setString(2, date);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List<String> getUnavailableDatesForDoctor(int doctorId) {
+        List<String> unavailableDates = new ArrayList<>();
+        String query = "SELECT appoint_date FROM appointment WHERE doctor_id = ? GROUP BY appoint_date HAVING COUNT(*) >= 6";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, doctorId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String appointDate = rs.getString("appoint_date");
+                unavailableDates.add(appointDate);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return unavailableDates;
+    }
+
 
 }
