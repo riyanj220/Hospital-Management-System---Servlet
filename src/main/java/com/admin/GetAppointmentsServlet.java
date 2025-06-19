@@ -34,11 +34,9 @@ public class GetAppointmentsServlet extends HttpServlet {
             }
         }
 
-        // Convert the list of appointments to JSON
         Gson gson = new Gson();
         String appointmentsJson = gson.toJson(appointments);
 
-        // Send the JSON response
         response.getWriter().write(appointmentsJson);
     }
 }

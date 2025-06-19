@@ -122,15 +122,15 @@
             </div>
 
             <div class="col-md-3">
-                <div class="info-card">
-                    <i class="fas fa-user-circle text-success"></i>
-                    <h6>Users</h6>
+                <div class="info-card" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#usersModal" onclick="fetchUsers()">
+                    <i class="fas fa-users text-info"></i>
+                    <h6>Total Users</h6>
                     <h4><%=dao.countUsers()%></h4>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="info-card" data-bs-toggle="modal" data-bs-target="#appointmentsModal" onclick="fetchAppointments()">
+                <div class="info-card" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#appointmentsModal" onclick="fetchAppointments()">
                     <i class="far fa-calendar-check text-info"></i>
                     <h6>Total Appointments</h6>
                     <h4><%=dao.countAppointment()%></h4>
@@ -138,7 +138,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="info-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="info-card" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa-solid fa-notes-medical text-danger"></i>
                     <h6>Specialist</h6>
                     <h4><%=dao.countSpecialist()%></h4>
@@ -230,6 +230,32 @@
         </div>
     </div>
 
+    <!-- Modal to Show All Users -->
+    <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="usersModalLabel">All Users</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersList">
+                            <!-- Users will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Function to fetch appointments and display them in the modal
         function fetchAppointments() {
@@ -288,6 +314,62 @@
             })
             .catch(error => {
                 console.error("Error deleting appointment:", error);
+            });
+        }
+
+        function fetchUsers() {
+            fetch('../getUsers')  // Make AJAX call to the endpoint to get all users
+                .then(response => response.json())
+                .then(users => {
+                    let usersList = document.getElementById("usersList");
+                    usersList.innerHTML = ""; // Clear existing rows
+
+                    // Loop through the users and create table rows
+                    users.forEach(user => {
+                        let row = usersList.insertRow(); // Create a new row
+
+                        // Create cells and append data
+                        let fullNameCell = row.insertCell(0);
+                        let emailCell = row.insertCell(1);
+                        let actionCell = row.insertCell(2);
+
+                        // Fill the cells with the data
+                        fullNameCell.textContent = user.fullName;
+                        emailCell.textContent = user.email;
+
+                        // Create a delete button
+                        let deleteButton = document.createElement('button');
+                        deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', function() {
+                            deleteUser(user.id);  // Pass the user ID here
+                        });
+
+                        actionCell.appendChild(deleteButton);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching users:", error);
+                });
+        }
+
+        // Function to delete a user
+        function deleteUser(userId) {
+            // Make AJAX call to delete the user
+            fetch('../deleteUser?id=' + userId, {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("User deleted successfully!");
+                    fetchUsers(); // Refresh the users list
+                } else {
+                    alert("Failed to delete the user.");
+                }
+            })
+            .catch(error => {
+                console.error("Error deleting user:", error);
             });
         }
 
