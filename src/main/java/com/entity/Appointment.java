@@ -13,6 +13,7 @@ public class Appointment {
     private int doctorId;
     private String address;
     private String status;
+    private String doctorName;
 
     public Appointment() {
         super();
@@ -129,6 +130,14 @@ public class Appointment {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
     
     

@@ -17,7 +17,7 @@ public class AdminLogin extends HttpServlet {
     public static class AdminUser extends User implements UserType {
         @Override
         public void showRole() {
-            System.out.println("Inside AdminUser::showRole() — I'm ADMIN");
+//            System.out.println("Inside AdminUser::showRole() — I'm ADMIN");
         }
     }
 
@@ -35,10 +35,8 @@ public class AdminLogin extends HttpServlet {
             }
 
             if (userType.equalsIgnoreCase("ADMIN")) {
-                System.out.println("UserFactory: Creating AdminUser");
                 return new AdminUser();
             } else if (userType.equalsIgnoreCase("DOCTOR")) {
-                System.out.println("UserFactory: Creating DoctorUser");
                 return new DoctorUser();
             }
 

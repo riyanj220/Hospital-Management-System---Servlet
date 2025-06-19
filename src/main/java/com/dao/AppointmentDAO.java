@@ -261,5 +261,19 @@ public class AppointmentDAO {
         return unavailableDates;
     }
 
+    public boolean deleteAppointment(int appointmentId) {
+        try {
+            String sql = "DELETE FROM appointment WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, appointmentId);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
 }

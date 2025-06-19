@@ -130,7 +130,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="info-card">
+                <div class="info-card" data-bs-toggle="modal" data-bs-target="#appointmentsModal" onclick="fetchAppointments()">
                     <i class="far fa-calendar-check text-info"></i>
                     <h6>Total Appointments</h6>
                     <h4><%=dao.countAppointment()%></h4>
@@ -201,5 +201,101 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal to Show All Appointments -->
+    <div class="modal fade" id="appointmentsModal" tabindex="-1" aria-labelledby="appointmentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentsModalLabel">All Appointments</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="appointmentsTable">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Appointment Date</th>
+                                <th>Doctor Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsList">
+                            <!-- Appointments will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch appointments and display them in the modal
+        function fetchAppointments() {
+            // Make AJAX call to the endpoint to get all appointments
+            fetch('../getAppointments')
+                .then(response => response.json())
+                .then(appointments => {
+                    let appointmentsList = document.getElementById("appointmentsList");
+                    appointmentsList.innerHTML = ""; // Clear existing rows
+
+                    // Loop through the appointments and create table rows
+                    appointments.forEach(appointment => {
+                        let row = appointmentsList.insertRow(); // Create a new row
+
+                        // Create cells and append data
+                        let fullNameCell = row.insertCell(0);
+                        let appoinDateCell = row.insertCell(1);
+                        let doctorNameCell = row.insertCell(2);
+                        let actionCell = row.insertCell(3);
+
+                        // Fill the cells with the data
+                        fullNameCell.textContent = appointment.fullName;
+                        appoinDateCell.textContent = appointment.appoinDate;
+                        doctorNameCell.textContent = "Dr. " + (appointment.doctorName || "Unknown Doctor");
+
+                        let deleteButton = document.createElement('button');
+                        deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', function() {
+                            deleteAppointment(appointment.id);  // Pass the ID here
+                        });
+
+                        actionCell.appendChild(deleteButton);
+
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching appointments:", error);
+                });
+        }
+
+        // Function to delete an appointment
+        function deleteAppointment(appointmentId) {
+            // Make AJAX call to delete the appointment
+            fetch('../deleteAppointment?id=' + appointmentId, {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Appointment deleted successfully!");
+                    fetchAppointments(); // Refresh the appointments list
+                } else {
+                    alert("Failed to delete the appointment.");
+                }
+            })
+            .catch(error => {
+                console.error("Error deleting appointment:", error);
+            });
+        }
+
+    </script>
+
+    <!-- Include Bootstrap JS (Bootstrap 5) for modal functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
